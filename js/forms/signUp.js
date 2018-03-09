@@ -81,7 +81,7 @@ jQuery(document).ready(function($) {
 			console.log(jsonData);
             $.ajax({
                 type: "POST",
-                url: proxyURL + "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/signup",
+                url: "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/signup",
                 data: jsonData,
                 success: function(msg){
                    if (msg.messageFromServer == "Successful") {
