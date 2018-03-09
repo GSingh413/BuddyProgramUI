@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>My Buddy - Connecting you to Vanguard!</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" />
+  <!-- Squad theme CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/popup.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/autocomplete.css" rel="stylesheet">
+  <link href="color/default.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="load"></div>
+  </div>
+
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+        <a class="navbar-brand" href="index.html">
+          <h1>My Buddy</h1>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <li id="homesectiondropdown" class="active"><a href="#intro">Home</a></li>
+          <li id="aboutsectiondropdown"><a href="#about">About</a></li>
+          <li id="signupsectiondropdown1"><a href="#signupsection">Sign Up</a></li>
+		  <li id="signupsectiondropdown2"><a href="#signupsection">Log In</a></li>
+		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection">My Profile</a></li>
+		  <li id="logoutdropdown" class="hidden"><a href="#" onclick="logOut(); return false">Log Out</a></li>
+		</ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Section: intro -->
+  <section id="intro" class="intro">
+
+    <div class="slogan">
+      <h2>WELCOME TO <span class="text_color">My Buddy</span> </h2>
+      <h4>We help you find the best Buddy for you!</h4>
+    </div>
+    <div class="page-scroll" id="aboutPageScroll">
+      <a href="#about" class="btn btn-circle">
+				<i class="fa fa-angle-double-down animated"></i>
+			</a>
+    </div>
+  </section>
+  <!-- /Section: intro -->
+
+
+  <!-- Section: about --> 
+  <section id="about" class="home-section text-center bg-gray">
+
+    <div class="heading-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="wow bounceInDown" data-wow-delay="0.4s">
+              <div class="section-heading">
+                <h2>How we work..</h2>
+                <i class="fa fa-2x fa-angle-down"></i>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-5">
+          <hr class="marginbot-50">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="wow fadeInLeft" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <img src="img/icons/service-icon-1.png" alt="" />
+              </div>
+              <div class="service-desc">
+                <h5>Sign Up</h5>
+                <p>Simply sign up and fill out your profile.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <img src="img/icons/service-icon-2.png" alt="" />
+              </div>
+              <div class="service-desc">
+                <h5>Tailored recommendation</h5>
+                <p>Based on your interests, we will match you with top Buddies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <img src="img/icons/service-icon-3.png" alt="" />
+              </div>
+              <div class="service-desc">
+                <h5>Perfect Fit</h5>
+                <p>Connect with multiple matches to find the perfect fit for you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="wow fadeInRight" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <img src="img/icons/service-icon-4.png" alt="" />
+              </div>
+              <div class="service-desc">
+                <h5>A New Friend</h5>
+                <p>Build your relationship with your new buddy over the course of the year.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: about -->
+
+    
+  <!-- Section: sign up -->
+  <section id="signupsection" class="home-section text-center bg-gray">
+
+    <div class="heading-about">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="wow bounceInDown" data-wow-delay="0.4s">
+              <div class="section-heading">
+                <h2>Get Started</h2>
+                <i class="fa fa-2x fa-angle-down"></i>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	
+	<div class="container">
+
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-5">
+          <hr class="marginbot-50">
+        </div>
+      </div>
+      <div class="row">
+	  <div class="col-lg-4" style="max-width: 18%">
+	  </div>
+       	<div class="col-lg-4">
+          <div class="widget-contact">
+           <form method="get" action="" id="signup" class="signupForm">
+              <div class="row">
+			  <h5>Sign Up</h5>
+                <div class="col-md-12" style="max-width=400px, float=right">
+                  <div class="form-group">
+                    <label for="email">
+                                Email Address</label>
+                    <div class="form-group">
+                      <input type="email" class="form-control" name="email" id="signup-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="signup-password">
+                                Password</label>
+                    <input type="password" class="form-control" name="signup-password" id="signup-password" data-rule="minlen:8" data-msg="Password must be 8 chars long." />
+                    <div class="validation"></div>
+                  </div>
+				  <div class="form-group">
+                    <label for="signup-password2">
+                                Confirm Password</label>
+                    <input type="password" class="form-control" name="signup-password2" id="signup-password2" data-rule="minlen:8" data-msg="Password must be 8 chars long." />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-skin pull-right" id="btnSignUp">
+                            Sign Up</button>
+                </div>
+              </div>
+			</form>
+			<div id="signUpSuccessMessage" style="color: green"></div>
+            <div id="signUpErrorMessage" style="color: red"></div>
+          </div>
+        </div>
+
+		<div class="col-lg-4">
+          <div class="widget-contact">
+           <form method="get" action="" id="login" class="logInForm">
+              <div class="row">
+			  <h5>Log In</h5>
+                <div class="col-md-12" style="max-width=400px, float=right">
+                  <div class="form-group">
+                    <label for="email">
+                                Email Address</label>
+                    <div class="form-group">
+                      <input type="email" class="form-control" name="email" id="login-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="signup-password">
+                                Password</label>
+                    <input type="password" class="form-control" name="signup-password" id="login-password" data-rule="minlen:8" data-msg="Password must be 8 chars long." />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-skin pull-right" id="btnLogIn">
+                            Log In</button>
+                </div>
+              </div>
+			</form>
+			<div id="logInSuccessMessage" style="color: green"></div>
+            <div id="logInErrorMessage" style="color: red"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+ </section>
+  <!-- /Section: sign up -->
+
+<!-- Section: about --> 
+  <section id="myprofilesection" class="home-section text-center bg-gray">
+    <div class="container">
+		<div class="col-lg-4">
+			<div class="wow fadeInLeft" data-wow-delay="0.2s">
+				<div>
+					<img src="img/icons/userProfile.png" alt="Avatar"  style="width:150px"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+          <div class="widget-contact">
+            <h2 id="loggedInUserName">John Doe</h2>
+            <address>
+				  <h4 id="loggedInUserTitle">Full Stack Developer</h4><br><br><br><br>
+			</address>
+          </div>
+        </div>
+		<button class="btn btn-skin" id="aboutMeEditModalBtn">Edit Profile</button>
+    </div>
+	<div class="container">
+		<address style="font-size:17px">
+			<h4>About Me</h4>
+			<div id="loggedInUserAboutMe">I love taking long walks while watching the sun set just beyond the horizon behind the mountain range. I aspire to be a people leader driving change and encouraging growth. I excel in technology but I am looking to grow my soft skills and my leadership footprint.</div>
+		</address>
+	</div>
+	
+		<div class="container" style="margin-top:25px">
+		<address style="font-size:17px">
+			<h4>My Interests</h4>
+			<input id="ms1" style="width:100%; height:30px;" type="text" name="ms1"/>
+			<div style="clear:both;"></div>
+		</address>
+	</div>
+  </section>
+  
+	<!-- The Modal -->
+<div id="aboutMeEditModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="width:450px;">
+    <span id="aboutMeEditModalClose" class="close">&times;</span>
+    <div class="container">
+      <div class="row">
+		<div class="col-lg-8">
+          <div class="widget-contact" style="max-width: 50%;">
+           <form method="get" action="" id="updateProfileForm" class="logInForm">
+              <div class="row">
+			  <h5>Update Profile</h5>
+                <div class="col-md-12" style="max-width=400px, float=right">
+                  <div class="form-group">
+                    <label for="first-name">
+                                First Name</label>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="aboutMeEditModalFirstName" id="aboutMeEditModalFirstName" placeholder="John" data-msg="Please enter your first name." required/>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name">
+                                Last Name</label>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="aboutMeEditModalLastName" id="aboutMeEditModalLastName" placeholder="Doe" data-msg="Please enter your last name." required/>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <label for="about-me">
+                                About Me</label>
+                    <div class="form-group">
+                      <textarea rows="4" cols="50" class="form-control" name="aboutMeEditModalAboutMe" id="aboutMeEditModalAboutMe" placeholder="Tell us about your hobbies, goals and anything else you can think of!"></textarea>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <div class="form-group">
+                      <input type="checkBox" name="aboutMeEditModalIsMentor" id="aboutMeEditModalIsMentor" value="true" checked> I would like to become a mentor.<br>
+					</div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-skin pull-right" id="btnUpdateProfile">
+                            Update Profile</button>
+                </div>
+              </div>
+			</form>
+			<div id="updateProfileSuccessMessage" style="color: green"></div>
+            <div id="updateProfileErrorMessage" style="color: red"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+  <!-- /Section: about -->
+  
+
+  
+  <!-- Section: contact -->
+  <section id="contact" class="home-section text-center hidden">
+    <div class="heading-contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="wow bounceInDown" data-wow-delay="0.4s">
+              <div class="section-heading">
+                <h2>Get in touch</h2>
+                <i class="fa fa-2x fa-angle-down"></i>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container hidden">
+
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-5">
+          <hr class="marginbot-50">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="boxed-grey">
+
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form id="contact-form" action="" method="post" role="form" class="contactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">
+                                Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">
+                                Email Address</label>
+                    <div class="form-group">
+                      <input type="email" class="form-control" name="email" id="contact-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="subject">
+                                Subject</label>
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">
+                                Message</label>
+                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                            Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="widget-contact">
+            <h5>Main Office</h5>
+
+            <address>
+				  <strong>Squas Design, Inc.</strong><br>
+				  Tower 795 Folsom Ave, Beautiful Suite 600<br>
+				  San Francisco, CA 94107<br>
+				  <abbr title="Phone">P:</abbr> (123) 456-7890
+			</address>
+
+            <address>
+				  <strong>Email</strong><br>
+				  <a href="mailto:#">email.name@example.com</a>
+				</address>
+            <address>
+				  <strong>We're on social networks</strong><br>
+                       	<ul class="company-social">
+                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+				</address>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /Section: contact -->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="wow shake" data-wow-delay="0.4s">
+            <div class="page-scroll marginbot-30">
+              <a href="#intro" id="totop" class="btn btn-circle">
+							<i class="fa fa-angle-double-up animated"></i>
+						</a>
+            </div>
+          </div>
+          <p>&copy;MyBuddy. All rights reserved.</p>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact. 
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Squadfree
+            -->
+            <a href="https://bootstrapmade.com/bootstrap-one-page-templates/">Bootstrap One Page Templates</a> by BootstrapMade
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/wow.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="js/custom.js"></script>
+  <script src="js/autocomplete.js"></script>
+  <script src="js/forms/contact.js"></script>
+  <script src="js/forms/updateProfile.js"></script>
+  <script src="js/forms/signUp.js"></script>
+  <script src="js/forms/logIn.js"></script>
+</body>
+
+</html>
