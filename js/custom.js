@@ -52,8 +52,75 @@
 
 jQuery(document).ready(function($) {
 	updateValidUserUI($);
+	$('#multiselect').multiselect();
+	loadMultiSelect($);
 });
+	
+	function loadMultiSelect($) {
+			var interests = 'Big Data,Security,It,Leadership,Application Development,Financial Analysis,Investing,Marketing,Sales,Customer Relations'.split(',');
+			$.ajax({
+                type: "GET", 
+				method: "GET",
+                url: "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/interest/" + + sessionStorage.getItem("userId"),
+                success: function(msg){
+                    if (msg.messageFromServer == "Success") {
+						var userJsonInterests = msg.interests;
+						var multiSelectFrom = document.getElementById("multiselect");
+						for(var i=0; i<userJsonInterests.length; i++) {
+							var opt = document.createElement('option');
+							opt.value = userJsonInterests[i].interestEnum;
+							var innerHtmlForOption = userJsonInterests[i].interestEnum.replace('_', ' ');
+							opt.innerHTML  = toTitleCase(innerHtmlForOption);	
+							var multiSelectTo = document.getElementById("multiselect_to_1");	
+							var alreadyExistsInSelectTo = false;
+							for(var j=0; j<multiSelectTo.length; j++) {
+								if(multiSelectTo.options[j].value === opt.value) {
+									alreadyExistsInSelectTo = true;
+									break;
+								}
+							}
+							if (alreadyExistsInSelectTo === false) {
+								multiSelectTo.appendChild(opt);
+							}							
+						}
+						
+						for (var i=0; i<interests.length; i++) {
+							var existsInSelectTo = false;
+							for(var j=0; j<userJsonInterests.length; j++) {
+								var innerHtmlForOption = userJsonInterests[j].interestEnum.replace('_', ' ');
+								innerHtmlForOption  = toTitleCase(innerHtmlForOption);	
+								if (innerHtmlForOption === interests[i]) {
+									existsInSelectTo = true;
+									break;
+								}
+							}
+							
+							if(existsInSelectTo === false) {
+								var opt = document.createElement('option');
+								opt.innerHTML = interests[i];
+								opt.value = interests[i].replace(' ', '_').toUpperCase();
+								multiSelectFrom.appendChild(opt);
+							}
+						}
+                    } else {
+						//do nothing
+                    }
+                },
+				 error: function (jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText)
+				}, 
+				 complete: function (data) {
+					console.log(data);	
+				 }
 
+            });			                           
+	}
+	
+	function toTitleCase(str)
+	{
+		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	}
+	
 	function updateValidUserUI($) {
 		if (!isEmpty(sessionStorage.getItem("email"))) { 
 			$("#signupsection").removeClass("show");		
