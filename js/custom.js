@@ -52,8 +52,6 @@
 
 jQuery(document).ready(function($) {
 	updateValidUserUI($);
-	$('#multiselect').multiselect();
-	loadMultiSelect($);
 });
 	
 	function loadMultiSelect($) {
@@ -134,7 +132,9 @@ jQuery(document).ready(function($) {
 			$("#myprofiledropdown").removeClass("hidden");
 			$("#logoutdropdown").removeClass("hidden");
 			
-			
+			$('#multiselect').multiselect();
+			loadMultiSelect($);
+	
 			//update ui
 			$.ajax({
                 type: "GET",
