@@ -58,6 +58,7 @@ jQuery(document).ready(function($) {
 	
 	function loadMultiSelect($) {
 			var interests = 'Big Data,Security,It,Leadership,Application Development,Financial Analysis,Investing,Marketing,Sales,Customer Relations'.split(',');
+			var userInterests;
 			$.ajax({
                 type: "GET", 
 				method: "GET",
@@ -65,12 +66,14 @@ jQuery(document).ready(function($) {
                 success: function(msg){
                     if (msg.messageFromServer == "Success") {
 						var userJsonInterests = msg.interests;
+						userInterests = new Array(userJsonInterests.length);
 						var multiSelectFrom = document.getElementById("multiselect");
 						for(var i=0; i<userJsonInterests.length; i++) {
 							var opt = document.createElement('option');
 							opt.value = userJsonInterests[i].interestEnum;
 							var innerHtmlForOption = userJsonInterests[i].interestEnum.replace('_', ' ');
-							opt.innerHTML  = toTitleCase(innerHtmlForOption);	
+							opt.innerHTML  = toTitleCase(innerHtmlForOption);
+							userInterests[i] = opt.innerHTML;
 							var multiSelectTo = document.getElementById("multiselect_to_1");	
 							var alreadyExistsInSelectTo = false;
 							for(var j=0; j<multiSelectTo.length; j++) {
@@ -84,23 +87,13 @@ jQuery(document).ready(function($) {
 							}							
 						}
 						
-						for (var i=0; i<interests.length; i++) {
-							var existsInSelectTo = false;
-							for(var j=0; j<userJsonInterests.length; j++) {
-								var innerHtmlForOption = userJsonInterests[j].interestEnum.replace('_', ' ');
-								innerHtmlForOption  = toTitleCase(innerHtmlForOption);	
-								if (innerHtmlForOption === interests[i]) {
-									existsInSelectTo = true;
-									break;
-								}
-							}
-							
-							if(existsInSelectTo === false) {
+						var differences = diff(interests, userInterests);
+						for (var i=0; i<differences.length; i++) {
+							var existsInSelectTo = false;				
 								var opt = document.createElement('option');
-								opt.innerHTML = interests[i];
-								opt.value = interests[i].replace(' ', '_').toUpperCase();
-								multiSelectFrom.appendChild(opt);
-							}
+								opt.innerHTML = differences[i];
+								opt.value = differences[i].replace(' ', '_').toUpperCase();
+								multiSelectFrom.appendChild(opt);							
 						}
                     } else {
 						//do nothing
@@ -116,6 +109,12 @@ jQuery(document).ready(function($) {
             });			                           
 	}
 	
+	function diff(a1, a2) {
+	  return a1.concat(a2).filter(function(val, index, arr){
+		return arr.indexOf(val) === arr.lastIndexOf(val);
+	  });
+	}
+
 	function toTitleCase(str)
 	{
 		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
