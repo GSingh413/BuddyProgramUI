@@ -48,7 +48,8 @@
           <li id="aboutsectiondropdown"><a href="#about">About</a></li>
           <li id="signupsectiondropdown1"><a href="#signupsection">Sign Up</a></li>
 		  <li id="signupsectiondropdown2"><a href="#signupsection">Log In</a></li>
-		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection">My Profile</a></li>
+		  <li id="findmybuddydropdown" class="hidden"><a href="#findmybuddy" onclick="findMyBuddy()">Find My Buddy</a></li>
+		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection" >My Profile</a></li>
 		  <li id="logoutdropdown" class="hidden"><a href="#" onclick="logOut(); return false">Log Out</a></li>
 		</ul>
       </div>
@@ -256,6 +257,8 @@
         </div>
       </div>
 
+	  
+	  //
     </div>
  </section>
   <!-- /Section: sign up -->
@@ -306,7 +309,45 @@
 		</address>
 	</div>
   </section>
+  <!-- Find My Buddy Section -->
+  <section id="findmybuddy" class="home-section text-center bg-gray">
+   <div class="container">
   
+		<div class="col-lg-3" >
+			<div class="wow" data-wow-delay="0.2s">
+				<div>
+					<img src="img/icons/userProfile.png" alt="Avatar"  style="width:75px"/>
+					<h4>Match 1</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3" >
+			<div class="wow" data-wow-delay="0.2s">
+				<div>
+					<img src="img/icons/userProfile.png" alt="Avatar"  style="width:75px"/>
+					<h4>Match 2</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3" >
+			<div class="wow" data-wow-delay="0.2s">
+				<div>
+					<img src="img/icons/userProfile.png" alt="Avatar"  style="width:75px"/>
+					<h4>Match 3</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3" >
+			<div class="wow" data-wow-delay="0.2s">
+				<div>
+					<img src="img/icons/userProfile.png" alt="Avatar"  style="width:75px"/>
+					<h4>Match 4</h4>
+				</div>
+			</div>
+		</div>
+		</div>
+  </section>
+<!-- End My Buddy Section -->  
 	<!-- The Modal -->
 <div id="aboutMeEditModal" class="modal">
 
