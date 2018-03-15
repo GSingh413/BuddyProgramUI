@@ -130,11 +130,13 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").removeClass("show");
 			$("#myprofilesection").removeClass("hidden");
 			$("#myprofiledropdown").removeClass("hidden");
+			$("#findmybuddy").removeClass("hidden");
+			$("#findmybuddydropdown").removeClass("hidden");
 			$("#logoutdropdown").removeClass("hidden");
 			
 			$('#multiselect').multiselect();
 			loadMultiSelect($);
-	
+	//
 			//update ui
 			$.ajax({
                 type: "GET",
@@ -178,6 +180,8 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").addClass("hidden");
 			$("#myprofilesection").addClass("show");
 			$("#myprofiledropdown").addClass("show");
+			$("#findmybuddy").addClass("show");
+			$("#findmybuddydropdown").addClass("show");
 			$("#logoutdropdown").addClass("show");
 			
 		} else {
@@ -191,6 +195,8 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").removeClass("hidden");
 			$("#myprofilesection").removeClass("show");
 			$("#myprofiledropdown").removeClass("show");
+			$("#findmybuddy").removeClass("show");
+			$("#findmybuddydropdown").removeClass("show");
 			$("#logoutdropdown").removeClass("show");
 			
 			
@@ -204,6 +210,8 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").addClass("show");
 			$("#myprofilesection").addClass("hidden");
 			$("#myprofiledropdown").addClass("hidden");
+			$("#findmybuddy").addClass("hidden");
+			$("#findmybuddydropdown").addClass("hidden");
 			$("#logoutdropdown").addClass("hidden");
 		}
 	}
@@ -215,6 +223,10 @@ jQuery(document).ready(function($) {
 	function logOut() {
 		sessionStorage.removeItem("email");
 		updateValidUserUI($);
+	}
+	
+	function findMyBuddy() {
+		$("#myprofilesection").addClass("hidden");
 	}
 	
 	var proxyURL = 'https://cors-anywhere.herokuapp.com/';
