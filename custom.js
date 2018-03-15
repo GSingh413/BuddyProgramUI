@@ -180,8 +180,8 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").addClass("hidden");
 			$("#myprofilesection").addClass("show");
 			$("#myprofiledropdown").addClass("show");
-			$("#findmybuddy").addClass("show");
-			$("#findmybuddydropdown").addClass("show");
+			//$("#findmybuddy").addClass("show");
+			//$("#findmybuddydropdown").addClass("show");
 			$("#logoutdropdown").addClass("show");
 			
 		} else {
@@ -227,6 +227,12 @@ jQuery(document).ready(function($) {
 	
 	function findMyBuddy() {
 		$("#myprofilesection").addClass("hidden");
+		$("#findmybuddy").removeClass("hidden");
+	}
+	
+	function restoreProfile() {
+		$("#myprofilesection").removeClass("hidden");
+		$("#findmybuddy").addClass("hidden");
 	}
 	
 	var proxyURL = 'https://cors-anywhere.herokuapp.com/';
