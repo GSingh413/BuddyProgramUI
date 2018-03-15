@@ -311,7 +311,7 @@ hr {
 .intro {
 	width:100%;
 	position:relative;
-	background: url(../img/bg1.jpg) no-repeat top center;
+	background: url(../img/structure.jpg) no-repeat top center;
     background-size: cover;
     height: auto;
 }
@@ -347,7 +347,7 @@ hr {
 	background-color: rgba(0, 0, 0, 0);
 	text-decoration: none;
 	text-transform: uppercase;
-	border-width: 0px;
+	border-width: 8px;
 	border-color: #000;
 	border-style: none;
 	text-shadow: -1px 0 1px #000;
@@ -355,6 +355,7 @@ hr {
 
 .intro .slogan h4 {
 	color: #fff;
+	border-width: 8px;
 	text-shadow: -1px 1px 1px #000;
 }
 
