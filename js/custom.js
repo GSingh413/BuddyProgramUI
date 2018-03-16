@@ -51,7 +51,6 @@
 
 jQuery(document).ready(function($) {
 	updateValidUserUI($);
-	 $(window).scrollTop(0);
 });
 	
 	function loadMultiSelect($) {
