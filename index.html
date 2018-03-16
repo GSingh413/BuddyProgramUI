@@ -48,8 +48,8 @@
           <li id="aboutsectiondropdown"><a href="#about">About</a></li>
           <li id="signupsectiondropdown1"><a href="#signupsection">Sign Up</a></li>
 		  <li id="signupsectiondropdown2"><a href="#signupsection">Log In</a></li>
-		  <li id="findmybuddydropdown" class="hidden"><a href="#findmybuddy">Find My Buddy</a></li>
-		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection">My Profile</a></li>
+		  <li id="findmybuddydropdown" class="hidden"><a href="#findmybuddy" onclick="testBuddy()">Find My Buddy</a></li>
+		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection" onclick="restoreProfile()">My Profile</a></li>
 		  <li id="logoutdropdown" class="hidden"><a href="#" onclick="logOut(); return false">Log Out</a></li>
 		</ul>
       </div>
@@ -306,10 +306,16 @@
 		</address>
 	</div>
   </section>
-  <!-- Find My Buddy Section -->
+    <!-- Find My Buddy Section -->
   <section id="findmybuddy" class="home-section text-center bg-gray">
    <div class="container">
+  <div class="row">
+	<div class="col-lg-3">
+		<h3>Here Are Our Suggestions:</h3>	
+	</div>
   
+  </div>
+  <div class="row">
 		<div class="col-lg-3" >
 			<div class="wow" data-wow-delay="0.2s">
 				<div>
@@ -343,8 +349,9 @@
 			</div>
 		</div>
 		</div>
+		</div>
   </section>
-<!-- End My Buddy Section -->  
+<!-- End My Buddy Section --> 
 	<!-- The Modal -->
 <div id="aboutMeEditModal" class="modal">
 

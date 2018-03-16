@@ -51,6 +51,7 @@
 
 jQuery(document).ready(function($) {
 	updateValidUserUI($);
+	//testBuddy($);
 });
 	
 	function loadMultiSelect($) {
@@ -129,7 +130,7 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").removeClass("show");
 			$("#myprofilesection").removeClass("hidden");
 			$("#myprofiledropdown").removeClass("hidden");
-			$("#findmybuddy").removeClass("hidden");
+			//$("#findmybuddy").removeClass("hidden");
 			$("#findmybuddydropdown").removeClass("hidden");
 			$("#logoutdropdown").removeClass("hidden");
 			
@@ -168,7 +169,23 @@ jQuery(document).ready(function($) {
 				 }
 
             });
-			
+			//------TEST BUDDY--------------
+					$.ajax({
+                type: "POST",
+                url: " https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor",
+                data: { userId: sessionStorage.getItem("userId")},
+				success: function(msg){
+                   alert(msg);
+                },
+				 error: function (jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText)
+				}, 
+				 complete: function (data) {
+					console.log(data);	
+				 }
+
+            });
+			//-----END TEST BUDDY--------
 			$("#signupsection").addClass("hidden");		
 			$("#signupsectiondropdown1").addClass("hidden");
 			$("#signupsectiondropdown2").addClass("hidden");
@@ -179,7 +196,7 @@ jQuery(document).ready(function($) {
 			$("#homesectiondropdown").addClass("hidden");
 			$("#myprofilesection").addClass("show");
 			$("#myprofiledropdown").addClass("show");
-			$("#findmybuddy").addClass("show");
+			//$("#findmybuddy").addClass("show");
 			$("#findmybuddydropdown").addClass("show");
 			$("#logoutdropdown").addClass("show");
 			
@@ -226,6 +243,34 @@ jQuery(document).ready(function($) {
 	
 	function findMyBuddy() {
 		$("#myprofilesection").addClass("hidden");
+		$("#findmybuddy").removeClass("hidden");
+	}
+	
+	function restoreProfile() {
+		$("#myprofilesection").removeClass("hidden");
+		$("#findmybuddy").addClass("hidden");
 	}
 	
 	var proxyURL = 'https://cors-anywhere.herokuapp.com/';
+	
+	
+	function testBuddy($) {
+			$.ajax({
+                type: "GET", 
+				method: "GET",
+                url: "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor", //+ + sessionStorage.getItem("userId"),
+                success: function(msg){
+                    
+					alert(msg);
+                },
+				 error: function (jqXHR, textStatus, errorThrown) {
+					alert(jqXHR.responseText);
+					console.log(jqXHR.responseText);
+				}, 
+				 complete: function (data) {
+					console.log(data);	
+				 }
+
+            });			                           
+	};
+	
