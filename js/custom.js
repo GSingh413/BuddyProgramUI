@@ -46,12 +46,12 @@
 	navMain.on("click", "a:not([data-toggle])", null, function () {
 	   navMain.collapse('hide');
 	});
-
 })(jQuery);
 
 
 jQuery(document).ready(function($) {
 	updateValidUserUI($);
+	 $(window).scrollTop(0);
 });
 	
 	function loadMultiSelect($) {
