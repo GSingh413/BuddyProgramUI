@@ -179,7 +179,7 @@ jQuery(document).ready(function($) {
                 success: function(msg){
                     if (msg.messageFromServer == "Success") {
 						//alert(msg.mentorRecommendations);
-						//buildBuddyCarousel(msg.mentorRecommendations, 3);
+						buildBuddyCarousel(msg.mentorRecommendations, 3);
                     } else {
 						//do nothing
                     }
@@ -252,7 +252,7 @@ jQuery(document).ready(function($) {
 		$("#myprofilesection").addClass("hidden");
 		$("#findmybuddy").removeClass("hidden");
 		//REPLACE WITH CALL TO AJAX
-		var recommendationsOfBuddies = {
+		/*var recommendationsOfBuddies = {
 
 						"messageFromServer": "Success",
 
@@ -325,7 +325,7 @@ jQuery(document).ready(function($) {
 
 						]
 
-					}
+					}*/
 		
 		buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 3);
 	}
@@ -409,8 +409,8 @@ jQuery(document).ready(function($) {
 			buddy = carouselItemList[listItemCounter];
 			carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "IMG");
 			itemDiv.appendChild(carouselItemContent);
-			carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "PARA");
-			itemDiv.appendChild(carouselItemContent);
+			//carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "PARA");
+			//itemDiv.appendChild(carouselItemContent);
 			listItemCounter++;
 		}
 	
@@ -427,7 +427,7 @@ jQuery(document).ready(function($) {
 		var item, image, anchor, paragraph;
 		
 		item = document.createElement("DIV");
-		item.setAttribute("class", "carouselItemContent col-lg-2");
+		item.setAttribute("class", "carouselItemContent col-lg-4");
 		
 	/*	if(maxItemsInItemList == 2){
 			if(listItemCounter === 1){
@@ -445,6 +445,8 @@ jQuery(document).ready(function($) {
 			anchor = buildAnchor(image, buddy);
 			item.appendChild(anchor);
 			paragraph = buildParagraph(buddy, "Name");
+			item.appendChild(paragraph);
+			paragraph = buildParagraph(buddy, "About");
 			item.appendChild(paragraph);
 		}
 		
