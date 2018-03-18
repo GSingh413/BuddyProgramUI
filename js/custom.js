@@ -178,7 +178,8 @@ jQuery(document).ready(function($) {
 				data: jsonDataForRecommendations,
                 success: function(msg){
                     if (msg.messageFromServer == "Success") {
-						alert(msg.mentorRecommendations);
+						//alert(msg.mentorRecommendations);
+						buildBuddyCarousel(msg.mentorRecommendations, 3);
                     } else {
 						//do nothing
                     }
@@ -195,7 +196,7 @@ jQuery(document).ready(function($) {
 			$("#signupsection").addClass("hidden");		
 			$("#signupsectiondropdown1").addClass("hidden");
 			$("#signupsectiondropdown2").addClass("hidden");
-			$("#about").addClass("hidden");0
+			$("#about").addClass("hidden");
 			$("#aboutsectiondropdown").addClass("hidden");
 			$("#intro").addClass("show");
 			$("#aboutPageScroll").addClass("hidden");
@@ -251,7 +252,7 @@ jQuery(document).ready(function($) {
 		$("#myprofilesection").addClass("hidden");
 		$("#findmybuddy").removeClass("hidden");
 		//REPLACE WITH CALL TO AJAX
-		var recommendationsOfBuddies = {
+		/*var recommendationsOfBuddies = {
 
 						"messageFromServer": "Success",
 
@@ -324,13 +325,15 @@ jQuery(document).ready(function($) {
 
 						]
 
-					}
+					}*/
 		
-		buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 2);
+		//buildBuddyCarousel(recommendationsOfBuddies, 2);
 	}
 	
 	function buildBuddyCarousel(mentorRecommendations, maxItemsInItemList){
 		var carouselItemList, carouselItemList, carouselListItemCounter, carouselItemRowCounter, buddyListLength, buddyCounter, indicatorCounter;
+		
+		//alert(mentorRecommendations[0].firstName);
 		
 		carouselListItemCounter = 0;
 		carouselItemRowCouter = -1;
@@ -339,12 +342,15 @@ jQuery(document).ready(function($) {
 		carouselItemList = [];
 		
 		while((buddyCounter < buddyListLength) && (buddyCounter < 9)) {
+		//alert("In buildBuddyCarousel Loop. Length is: " + buddyListLength);
 			var buddy = mentorRecommendations[buddyCounter];
 			
 			carouselItemList.push(buddy);
 			carouselListItemCounter++;
 			
-			if((carouselListItemCounter == maxItemsInItemList) || (buddyCounter == buddyListLength)){
+			if((carouselListItemCounter == maxItemsInItemList) || (buddyCounter == buddyListLength) || (buddyListLength == 1) || (buddyListLength == 2)){
+				//alert("In buildBuddyCarousel IF");
+			
 				carouselItemRowCounter++;
 				indicatorCounter++;
 				buildItem(carouselItemList, carouselItemRowCounter, maxItemsInItemList, indicatorCounter);
@@ -358,6 +364,8 @@ jQuery(document).ready(function($) {
 	
 	function buildItem (carouselItemList, carouselItemRowCounter, maxItemsInItemList, indicatorCounter) {
 		var carouselContainer, dotIndicatorContainer, itemDiv, indicator, indicatorID;
+		
+	//	alert("In buildItem");
 		
 		carouselContainer = document.getElementById("buddyContainer");
 		
@@ -387,6 +395,8 @@ jQuery(document).ready(function($) {
 		var listItemCounter, carouselItemContent, startDiv, endDiv, carouselItemListLength, buddy;
 		carouselItemListLength = carouselItemList.length;
 		
+	//	alert("In buildItemContent");
+		
 		//startDiv = document.createElement("DIV");
 		//startDiv.setAttribute("class", "col-lg-1");
 		//itemDiv.appendChild(startDiv);
@@ -394,6 +404,8 @@ jQuery(document).ready(function($) {
 		listItemCounter = 0;
 		
 		while(listItemCounter < carouselItemListLength) {
+		//	alert("In buildItemContent Loop");
+		
 			buddy = carouselItemList[listItemCounter];
 			carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "IMG");
 			itemDiv.appendChild(carouselItemContent);
