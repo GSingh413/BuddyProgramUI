@@ -179,7 +179,7 @@ jQuery(document).ready(function($) {
                 success: function(msg){
                     if (msg.messageFromServer == "Success") {
 						//alert(msg.mentorRecommendations);
-						buildBuddyCarousel(msg.mentorRecommendations, 3);
+						//buildBuddyCarousel(msg.mentorRecommendations, 3);
                     } else {
 						//do nothing
                     }
@@ -252,7 +252,7 @@ jQuery(document).ready(function($) {
 		$("#myprofilesection").addClass("hidden");
 		$("#findmybuddy").removeClass("hidden");
 		//REPLACE WITH CALL TO AJAX
-		/*var recommendationsOfBuddies = {
+		var recommendationsOfBuddies = {
 
 						"messageFromServer": "Success",
 
@@ -325,9 +325,9 @@ jQuery(document).ready(function($) {
 
 						]
 
-					}*/
+					}
 		
-		//buildBuddyCarousel(recommendationsOfBuddies, 2);
+		buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 3);
 	}
 	
 	function buildBuddyCarousel(mentorRecommendations, maxItemsInItemList){
