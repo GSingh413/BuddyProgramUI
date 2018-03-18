@@ -169,13 +169,17 @@ jQuery(document).ready(function($) {
 				 }
 
             });
+			
+
 			//------TEST BUDDY--------------
-					$.ajax({
-                type: "POST",
-                url: " https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor",
-                data: { userId: sessionStorage.getItem("userId")},
-				success: function(msg){
-                   alert(msg);
+		/*$.ajax({
+                type: "GET",
+                url: " https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor/" + sessionStorage.getItem("userId"),
+                //data: JSON.stringify({ userId: sessionStorage.getItem("userId")}),
+				//headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+				//dataType: "json",
+				success: function(data){
+                   alert(data);
                 },
 				 error: function (jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR.responseText)
@@ -184,12 +188,12 @@ jQuery(document).ready(function($) {
 					console.log(data);	
 				 }
 
-            });
+            });*/
 			//-----END TEST BUDDY--------
 			$("#signupsection").addClass("hidden");		
 			$("#signupsectiondropdown1").addClass("hidden");
 			$("#signupsectiondropdown2").addClass("hidden");
-			$("#about").addClass("hidden");
+			$("#about").addClass("hidden");0
 			$("#aboutsectiondropdown").addClass("hidden");
 			$("#intro").addClass("show");
 			$("#aboutPageScroll").addClass("hidden");
@@ -244,6 +248,232 @@ jQuery(document).ready(function($) {
 	function findMyBuddy() {
 		$("#myprofilesection").addClass("hidden");
 		$("#findmybuddy").removeClass("hidden");
+		//REPLACE WITH CALL TO AJAX
+		var recommendationsOfBuddies = {
+
+						"messageFromServer": "Success",
+
+						"mentorRecommendations": [
+
+							{
+
+								"userId": 31,
+
+								"firstName": "Mia",
+
+								"lastName": "Harkins",
+
+								"aboutMe": "Test out Leap",
+
+								"interests": [
+
+									{
+
+										"interestEnum": "IT"
+
+									}
+
+								]
+
+							},
+
+							{
+
+								"userId": 3,
+
+								"firstName": "Raj",
+
+								"lastName": "Singh",
+
+								"aboutMe": "The cow jumped over the moon and thats why it is made out of cheese!!! On a serious note, why is the sky blue?",
+
+								"interests": [
+
+									{
+
+										"interestEnum": "APPLICATION_DEVELOPMENT"
+
+									}
+
+								]
+
+							},
+							{
+
+								"userId": 34,
+
+								"firstName": "Ryan",
+
+								"lastName": "Swanson",
+
+								"aboutMe": "Love to cook",
+
+								"interests": [
+
+									{
+
+										"interestEnum": "APPLICATION_DEVELOPMENT"
+
+									}
+
+								]
+
+							}
+
+						]
+
+					}
+		
+		buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 2);
+	}
+	
+	function buildBuddyCarousel(mentorRecommendations, maxItemsInItemList){
+		var carouselItemList, carouselItemList, carouselListItemCounter, carouselItemRowCounter, buddyListLength, buddyCounter, indicatorCounter;
+		
+		carouselListItemCounter = 0;
+		carouselItemRowCouter = -1;
+		buddyCounter = 0;
+		buddyListLength = mentorRecommendations.length;
+		carouselItemList = [];
+		
+		while((buddyCounter < buddyListLength) && (buddyCounter < 9)) {
+			var buddy = mentorRecommendations[buddyCounter];
+			
+			carouselItemList.push(buddy);
+			carouselListItemCounter++;
+			
+			if((carouselListItemCounter == maxItemsInItemList) || (buddyCounter == buddyListLength)){
+				carouselItemRowCounter++;
+				indicatorCounter++;
+				buildItem(carouselItemList, carouselItemRowCounter, maxItemsInItemList, indicatorCounter);
+				carouselListItemCounter = 0;
+				carouselItemList = [];
+			}
+			buddyCounter++;
+		}
+		
+	}
+	
+	function buildItem (carouselItemList, carouselItemRowCounter, maxItemsInItemList, indicatorCounter) {
+		var carouselContainer, dotIndicatorContainer, itemDiv, indicator, indicatorID;
+		
+		carouselContainer = document.getElementById("buddyContainer");
+		
+		dotIndicatorContainer = document.getElementById("dotIndicators");
+		
+		itemDiv = document.createElement("DIV");
+		
+		if(carouselItemRowCounter === 1){
+			itemDiv.setAttribute("class", "item active");
+		}else{
+			itemDiv.setAttribute("class", "item");
+		}
+		
+		itemDiv = buildItemContent(itemDiv, carouselItemList, maxItemsInItemList);
+		
+		carouselContainer.appendChild(itemDiv);
+		
+		if(maxItemsInItemList > 1){
+			indicator = document.createElement("LI");
+			indicator.setAttribute("data-target", "#carousel-content-option1");
+			indicator.setAttribute("data-slide-to", indicatorCounter);
+			//dotIndicatorContainer.appendChild(indicator);
+		}
+	}
+	
+	function buildItemContent(itemDiv, carouselItemList, maxItemsInItemList){
+		var listItemCounter, carouselItemContent, startDiv, endDiv, carouselItemListLength, buddy;
+		carouselItemListLength = carouselItemList.length;
+		
+		//startDiv = document.createElement("DIV");
+		//startDiv.setAttribute("class", "col-lg-1");
+		//itemDiv.appendChild(startDiv);
+		
+		listItemCounter = 0;
+		
+		while(listItemCounter < carouselItemListLength) {
+			buddy = carouselItemList[listItemCounter];
+			carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "IMG");
+			itemDiv.appendChild(carouselItemContent);
+			carouselItemContent = buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, "PARA");
+			itemDiv.appendChild(carouselItemContent);
+			listItemCounter++;
+		}
+	
+		//endDiv = document.createElement("DIV");
+		//endDiv.setAttribute("class", "col-lg-1");
+		//itemDiv.appendChild(endDiv);
+		
+		return itemDiv;
+	
+	}
+	
+	function buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, typeToBuild){
+		
+		var item, image, anchor, paragraph;
+		
+		item = document.createElement("DIV");
+		item.setAttribute("class", "carouselItemContent col-lg-2");
+		
+	/*	if(maxItemsInItemList == 2){
+			if(listItemCounter === 1){
+				item.setAttribute("class", "carouselItemContent col-lg-5 vuiTextAlignCenter");
+			}
+		}
+		
+		if(maxItemsInItemList === 1){
+			item.setAttribute("class", "carouselItemContent col-md-4 vuiTextAlignCenter");
+			item.style.height = "300px";
+		}*/ 
+		
+		if(typeToBuild == "IMG"){
+			image = buildImage(buddy);
+			anchor = buildAnchor(image, buddy);
+			item.appendChild(anchor);
+		}
+		
+		if(typeToBuild == "PARA"){
+			paragraph = buildParagraph(buddy);
+			item.appendChild(paragraph);
+		}
+		
+		return item;
+	}
+	
+	function buildImage(buddy){
+		var image = document.createElement("IMG");
+		image.setAttribute("src", "img/icons/userProfile.png");
+		image.setAttribute("alt", buddy.firstName + " " + buddy.lastName);
+		image.setAttribute("width", "100");
+		image.setAttribute("height", "100");
+		image.setAttribute("display", "block");
+		image.setAttribute("margin-left", "auto");
+		image.setAttribute("margin-right", "auto");
+		image.style.padding = "10px 10px 10px 10px";
+		
+		return image;
+	
+	}
+	
+	function buildAnchor(image, buddy) {
+		var anchor = document.createElement("A");
+		anchor.appendChild(image);
+		
+		return anchor;
+	}
+	
+	function buildParagraph(buddy)  {
+		var paragraph = document.createElement("P");
+		var paragraphName = document.createTextNode(buddy.firstName + " " + buddy.lastName);
+		var breakLine = document.createElement("br");
+		var paragraphDesc = document.createTextNode(buddy.aboutMe);
+		paragraph.setAttribute("text-align", "center");
+		
+		paragraph.appendChild(paragraphName);
+		paragraph.appendChild(breakLine);
+		paragraph.appendChild(paragraphDesc);
+		
+		return paragraph;
 	}
 	
 	function restoreProfile() {
@@ -253,24 +483,4 @@ jQuery(document).ready(function($) {
 	
 	var proxyURL = 'https://cors-anywhere.herokuapp.com/';
 	
-	
-	function testBuddy($) {
-			$.ajax({
-                type: "GET", 
-				method: "GET",
-                url: "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor", //+ + sessionStorage.getItem("userId"),
-                success: function(msg){
-                    
-					alert(msg);
-                },
-				 error: function (jqXHR, textStatus, errorThrown) {
-					alert(jqXHR.responseText);
-					console.log(jqXHR.responseText);
-				}, 
-				 complete: function (data) {
-					console.log(data);	
-				 }
-
-            });			                           
-	};
 	

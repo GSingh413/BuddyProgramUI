@@ -21,6 +21,9 @@
   <link href="css/popup.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
   <link href="color/default.css" rel="stylesheet">
+  
+  <!-- Buddy CSS -->
+  <link href="css/buddy.css" rel="stylesheet">
 
 </head>
 
@@ -48,7 +51,7 @@
           <li id="aboutsectiondropdown"><a href="#about">About</a></li>
           <li id="signupsectiondropdown1"><a href="#signupsection">Sign Up</a></li>
 		  <li id="signupsectiondropdown2"><a href="#signupsection">Log In</a></li>
-		  <li id="findmybuddydropdown" class="hidden"><a href="#findmybuddy" onclick="testBuddy()">Find My Buddy</a></li>
+		  <li id="findmybuddydropdown" class="hidden"><a href="#findmybuddy" onclick="findMyBuddy()">Find My Buddy</a></li>
 		  <li id="myprofiledropdown" class="hidden"><a href="#myprofilesection" onclick="restoreProfile()">My Profile</a></li>
 		  <li id="logoutdropdown" class="hidden"><a href="#" onclick="logOut(); return false">Log Out</a></li>
 		</ul>
@@ -308,7 +311,40 @@
   </section>
     <!-- Find My Buddy Section -->
   <section id="findmybuddy" class="home-section text-center bg-gray">
-   <div class="container">
+   <div class="buddycontainer" id="buddyContainer">
+  <h3 align="center" >Our Suggestions:</h3>
+  <div id="carousel-content-option1" class="carousel slide" data-ride="carousel"  >
+     <!-- Indicators -->
+
+    <ol class="carousel-indicators" id="dotIndicators">
+
+    </ol>
+
+    <!-- Wrapper for slides -->
+
+    <div class="carousel-inner " role="listbox" id="carouselItemContainer" text-align="center">
+
+       </div>
+
+      <!-- Left and right controls -->
+
+    <a class="left carousel-control" href="#carousel-content-option1" role="button" data-slide="prev">
+
+      <span class="icon-prev" aria-hidden="true"></span>
+
+    </a>
+
+    <a class="right carousel-control" href="#carousel-content-option1" role="button" data-slide="next">
+
+      <span class="icon-next" aria-hidden="true"></span>
+
+    </a>
+
+</div>
+
+</div>
+   
+  <!-- 
   <div class="row">
 	<div class="col-lg-3">
 		<h3>Here Are Our Suggestions:</h3>	
@@ -349,7 +385,7 @@
 			</div>
 		</div>
 		</div>
-		</div>
+		</div> -->
   </section>
 <!-- End My Buddy Section --> 
 	<!-- The Modal -->
