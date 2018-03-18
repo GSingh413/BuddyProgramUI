@@ -170,16 +170,18 @@ jQuery(document).ready(function($) {
 
             });
 			
-
-			//------TEST BUDDY--------------
-		/*$.ajax({
-                type: "GET",
-                url: " https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor/" + sessionStorage.getItem("userId"),
-                //data: JSON.stringify({ userId: sessionStorage.getItem("userId")}),
-				//headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-				//dataType: "json",
-				success: function(data){
-                   alert(data);
+			
+			var jsonDataForRecommendations = "{\"userId\":\"" + sessionStorage.getItem("userId") + "\"}";
+			$.ajax({
+                type: "POST",
+                url: "https://904xhviqh5.execute-api.us-east-2.amazonaws.com/MyBuddyPOC/recommendations/mentor",
+				data: jsonDataForRecommendations,
+                success: function(msg){
+                    if (msg.messageFromServer == "Success") {
+						alert(msg.mentorRecommendations);
+                    } else {
+						//do nothing
+                    }
                 },
 				 error: function (jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR.responseText)
@@ -188,8 +190,8 @@ jQuery(document).ready(function($) {
 					console.log(data);	
 				 }
 
-            });*/
-			//-----END TEST BUDDY--------
+            });
+			
 			$("#signupsection").addClass("hidden");		
 			$("#signupsectiondropdown1").addClass("hidden");
 			$("#signupsectiondropdown2").addClass("hidden");
