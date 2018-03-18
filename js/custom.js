@@ -444,10 +444,12 @@ jQuery(document).ready(function($) {
 			image = buildImage(buddy);
 			anchor = buildAnchor(image, buddy);
 			item.appendChild(anchor);
+			paragraph = buildParagraph(buddy, "Name");
+			item.appendChild(paragraph);
 		}
 		
 		if(typeToBuild == "PARA"){
-			paragraph = buildParagraph(buddy);
+			paragraph = buildParagraph(buddy, "About");
 			item.appendChild(paragraph);
 		}
 		
@@ -476,17 +478,21 @@ jQuery(document).ready(function($) {
 		return anchor;
 	}
 	
-	function buildParagraph(buddy)  {
+	function buildParagraph(buddy, typeToBuild)  {
 		var paragraph = document.createElement("P");
-		var paragraphName = document.createTextNode(buddy.firstName + " " + buddy.lastName);
-		var breakLine = document.createElement("br");
-		var paragraphDesc = document.createTextNode(buddy.aboutMe);
+		
+		if(typeToBuild == "Name"){
+			var paragraphName = document.createTextNode(buddy.firstName + " " + buddy.lastName);
+			paragraph.appendChild(paragraphName);
+		}
+		
+		if(typeToBuild == "About"){
+			var paragraphDesc = document.createTextNode(buddy.aboutMe);
+			paragraph.appendChild(paragraphDesc);
+		}
+			
 		paragraph.setAttribute("text-align", "center");
-		
-		paragraph.appendChild(paragraphName);
-		paragraph.appendChild(breakLine);
-		paragraph.appendChild(paragraphDesc);
-		
+				
 		return paragraph;
 	}
 	

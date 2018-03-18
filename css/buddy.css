@@ -206,7 +206,7 @@ margin-bottom: 50px;
 
 p {
 
-       max-height: 50%;
+       max-height:100%;
 
        max-width: 100%;
 
@@ -214,7 +214,7 @@ p {
 
        text-align: center;
 
-       display: inline-block;
+      # display: inline-block;
 
        word-wrap: break-word; 
 
