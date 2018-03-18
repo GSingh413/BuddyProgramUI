@@ -89,7 +89,8 @@ jQuery(document).ready(function($) {
 						$('#logInSuccessMessage').html("Successful Log in");
 						sessionStorage.setItem("email", msg.user.email);	
 						sessionStorage.setItem("userId", msg.user.userId);							
-						updateValidUserUI($);								
+						updateValidUserUI($);	
+						window.location.hash = '#myprofilesection';
                     }
                     else {
                         $("#logInSuccessMessage").removeClass("show");

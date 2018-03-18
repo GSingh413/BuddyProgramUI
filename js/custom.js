@@ -207,6 +207,7 @@ jQuery(document).ready(function($) {
 			$("#findmybuddydropdown").addClass("show");
 			$("#logoutdropdown").addClass("show");
 			
+			
 		} else {
 			$("#signupsection").removeClass("hidden");		
 			$("#signupsectiondropdown1").removeClass("hidden");
@@ -327,7 +328,7 @@ jQuery(document).ready(function($) {
 
 					}*/
 		
-		buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 3);
+		//buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 3);
 	}
 	
 	function buildBuddyCarousel(mentorRecommendations, maxItemsInItemList){
