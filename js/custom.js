@@ -118,6 +118,8 @@ jQuery(document).ready(function($) {
 		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	}
 	
+	var recommendedBuddies; 
+	
 	function updateValidUserUI($) {
 		if (!isEmpty(sessionStorage.getItem("email"))) { 
 			$("#signupsection").removeClass("show");		
@@ -179,6 +181,7 @@ jQuery(document).ready(function($) {
                 success: function(msg){
                     if (msg.messageFromServer == "Success") {
 						//alert(msg.mentorRecommendations);
+						recommendedBuddies = msg.mentorRecommendations;
 						buildBuddyCarousel(msg.mentorRecommendations, 3);
                     } else {
 						//do nothing
@@ -330,9 +333,9 @@ jQuery(document).ready(function($) {
 		
 		//buildBuddyCarousel(recommendationsOfBuddies.mentorRecommendations, 3);
 	}
-	
+		
 	function buildBuddyCarousel(mentorRecommendations, maxItemsInItemList){
-		var carouselItemList, carouselItemList, carouselListItemCounter, carouselItemRowCounter, buddyListLength, buddyCounter, indicatorCounter;
+		var carouselItemList, carouselListItemCounter, carouselItemRowCounter, buddyListLength, buddyCounter, indicatorCounter;
 		
 		//alert(mentorRecommendations[0].firstName);
 		
@@ -423,13 +426,35 @@ jQuery(document).ready(function($) {
 	
 	}
 	
+	function selectRecommendedBuddyPopUp(userId) {
+		document.getElementById('buddyRecommendationSelectModal').style.display = "block";	
+		
+		for(i=0; i < recommendedBuddies.length; i++) {
+			if (recommendedBuddies[i].userId == userId) {
+				document.getElementById('buddyRecommendationSelectModalFirstName').innerHTML = "First Name: <bold>" + recommendedBuddies[i].firstName + "<bold>";
+				document.getElementById('buddyRecommendationSelectModalLastName').innerHTML = "Last Name: " + recommendedBuddies[i].lastName+ "<bold>";
+				document.getElementById('buddyRecommendationSelectModalAboutMe').innerHTML = "About: " + recommendedBuddies[i].aboutMe+ "<bold>";
+				var interestOfRecommendedBuddy = "Interests: <bold>";
+				for (j=0; j< recommendedBuddies[i].interests.length; j++) {
+					if (j == 0) {
+						interestOfRecommendedBuddy = interestOfRecommendedBuddy + recommendedBuddies[i].interests[j].interestEnum;
+					} else {
+						interestOfRecommendedBuddy = interestOfRecommendedBuddy + ", " + recommendedBuddies[i].interests[j].interestEnum;
+					}
+				}
+				document.getElementById('buddyRecommendationSelectModalInterests').innerHTML = interestOfRecommendedBuddy+ "<bold>";
+				break;
+			}
+		}
+	}
+	
 	function buildCarouselContent(buddy, maxItemsInItemList, listItemCounter, typeToBuild){
 		
 		var item, image, anchor, paragraph;
 		
 		item = document.createElement("DIV");
 		item.setAttribute("class", "carouselItemContent col-lg-4");
-		
+		item.setAttribute("onclick", "selectRecommendedBuddyPopUp('" + buddy.userId + "')");
 	/*	if(maxItemsInItemList == 2){
 			if(listItemCounter === 1){
 				item.setAttribute("class", "carouselItemContent col-lg-5 vuiTextAlignCenter");
@@ -446,8 +471,6 @@ jQuery(document).ready(function($) {
 			anchor = buildAnchor(image, buddy);
 			item.appendChild(anchor);
 			paragraph = buildParagraph(buddy, "Name");
-			item.appendChild(paragraph);
-			paragraph = buildParagraph(buddy, "About");
 			item.appendChild(paragraph);
 		}
 		

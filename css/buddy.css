@@ -32,6 +32,10 @@ margin-bottom: 150px;
 
 }
 
+.carouselItemContent  {
+		cursor: pointer;
+}
+
 .carousel-control {
 
        width: inherit;

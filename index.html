@@ -388,6 +388,35 @@
 		</div> -->
   </section>
 <!-- End My Buddy Section --> 
+
+<!-- The Modal -->
+<div id="buddyRecommendationSelectModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="width:450px;">
+    <span id="buddyRecommendationSelectModalClose" class="close">&times;</span>
+    <div class="container">
+      <div class="row">
+		<div class="col-lg-8">
+          <div class="widget-contact" style="max-width: 50%;">
+			<label for="first-name" id="buddyRecommendationSelectModalFirstName">
+                                </label></br>
+			<label for="last-name" id="buddyRecommendationSelectModalLastName"></label></br>
+			<label for="last-name" id="buddyRecommendationSelectModalAboutMe"></label></br>
+			<label for="last-name" id="buddyRecommendationSelectModalInterests"></label></br>
+			<button type="submit" class="btn btn-skin pull-right" id="buddyRecommendationSelectBuddy">
+                            Send Invite</button>
+			<div id="updateProfileSuccessMessage" style="color: green"></div>
+            <div id="updateProfileErrorMessage" style="color: red"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
 	<!-- The Modal -->
 <div id="aboutMeEditModal" class="modal">
 
@@ -594,6 +623,7 @@
   <script src="js/wow.min.js"></script>
   <!-- Custom Theme JavaScript -->
   <script src="js/custom.js"></script>
+  <script src="js/selectRecommendedBuddy.js"></script>
   <script src="js/multiselect.js"></script>
   <script src="js/forms/contact.js"></script>
   <script src="js/forms/updateProfile.js"></script>
